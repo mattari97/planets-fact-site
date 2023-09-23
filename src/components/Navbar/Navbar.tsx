@@ -1,14 +1,14 @@
 import * as React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import styles from './Navbar.module.css';
 import json from '../../data/data.json';
 
-const NAVBAR_ITEMS = json.map((item) => ({ name: item.name, color: item.color }));
+const NAVBAR_ITEMS = json.map((item) => ({ name: item.name, color: item.color, slug: item.slug }));
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const toggleMenu = () => setMenuOpen((prev) => !prev);
-  const active = NAVBAR_ITEMS[0];
 
   return (
     <header className={styles.wrapper}>
@@ -26,20 +26,17 @@ function Navbar() {
       </button>
       <nav className={styles.nav} aria-expanded={menuOpen}>
         <ul>
-          {NAVBAR_ITEMS.map((item, index) => {
-            const isActive = active.name === item.name;
-            return (
-              <li key={index}>
-                <a data-active={isActive} aria-disabled={isActive} href={isActive ? '' : '#'}>
-                  <div className={styles.bullet} style={{ backgroundColor: `hsl(${item.color})` }} aria-hidden="true" />
-                  <span>{item.name}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 8" aria-hidden="true">
-                    <path fill="none" stroke="currentColor" opacity=".4" d="m1 0 4 4-4 4" />
-                  </svg>
-                </a>
-              </li>
-            );
-          })}
+          {NAVBAR_ITEMS.map((item, index) => (
+            <li key={index}>
+              <NavLink role="link" to={`/${item.slug}`}>
+                <div className={styles.bullet} style={{ backgroundColor: `hsl(${item.color})` }} aria-hidden="true" />
+                <span>{item.name}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 8" aria-hidden="true">
+                  <path fill="none" stroke="currentColor" opacity=".4" d="m1 0 4 4-4 4" />
+                </svg>
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>

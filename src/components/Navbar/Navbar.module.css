@@ -146,14 +146,14 @@
         transition: opacity 150ms linear;
       }
 
-      &[data-active='true'] {
+      &[aria-current='page'] {
         cursor: not-allowed;
         div {
           opacity: 1;
         }
       }
 
-      &[data-active='false']:hover {
+      &:hover {
         span {
           opacity: 0.5;
         }
