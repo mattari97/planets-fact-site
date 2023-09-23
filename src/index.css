@@ -204,6 +204,9 @@ body {
   font-weight: var(--fw-normal);
   color: hsl(var(--clr-neutral-100));
   background-color: hsl(var(--clr-neutral-400));
+  background-image: url('/assets/background-stars.svg');
+  background-position: center;
+  background-repeat: repeat;
 }
 
 *:focus-visible {
