@@ -48,7 +48,8 @@
     --fs-stats-content: 1.5rem;
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 980px) {
+    /* --fs-menu: 0.75rem; */
     --fs-tabs: 0.75rem;
     --fs-title: 5rem;
     --fs-body: 0.875rem;
@@ -59,13 +60,6 @@
 
   /* border */
   --outline-focus: 4px dotted hsl(var(--clr-neutral-100));
-
-  /* hover */
-  --hover-bg: var(--clr-accent) / 0.1;
-  --hover-transition: background-color 150ms linear;
-
-  /* border radius */
-  --br-base: 1rem;
 
   /* spacing */
   --space-2xs: 0.25rem; /* 4px */
