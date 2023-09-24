@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid hsl(0 0% 100% / 0.2);
+}
+
+.label {
+  font-size: var(--fs-stats-label);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.04544rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.stat {
+  font-size: var(--fs-stats-content);
+  font-family: var(--ff-heading);
+  letter-spacing: -0.04688rem;
+  text-transform: uppercase;
+}

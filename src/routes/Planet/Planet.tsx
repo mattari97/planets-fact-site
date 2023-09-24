@@ -1,6 +1,10 @@
+import * as React from 'react';
 import { useParams } from 'react-router-dom';
+
 import styles from './Planet.module.css';
 import jsonData from '../../data/data.json';
+import { SourceLink, StatDisplay, TabNavigation } from '../../components';
+import { Tabs } from '../../types';
 
 function getPlanetData(slug: string | undefined) {
   if (!slug) return jsonData[0];
@@ -13,11 +17,35 @@ function getPlanetData(slug: string | undefined) {
 
 function Planet() {
   const { slug } = useParams();
-  const data = getPlanetData(slug);
+  const data = React.useMemo(() => getPlanetData(slug), [slug]);
+  const [tab, setTab] = React.useState<Tabs>('overview');
+  const currInfos = React.useMemo(() => data[tab], [data, tab]);
+
   return (
-    <div className={styles.wrapper}>
-      <h1>{data.name}</h1>
-    </div>
+    <main className={styles.wrapper}>
+      <TabNavigation activeTab={tab} action={setTab} accentClr={data.color} />
+      <div className={styles.img}>
+        <img
+          src={tab === 'structure' ? data.images.structure : data.images.overview}
+          style={{ '--planet-scale': data.scale } as React.CSSProperties}
+          alt={`${data.name}'s ${tab === 'structure' ? 'structure' : 'overview'}`}
+        />
+        {tab === 'surface' && (
+          <img src={data.images.surface} alt={`${data.name}'s surface`} className={styles.surface} />
+        )}
+      </div>
+      <div className={styles.content}>
+        <h1>{data.name}</h1>
+        <p>{currInfos.content}</p>
+        <SourceLink source={currInfos.source} />
+      </div>
+      <div className={styles.stats}>
+        <StatDisplay label="Rotation Time" stat={data.rotation} />
+        <StatDisplay label="Revolution Time" stat={data.revolution} />
+        <StatDisplay label="Radius" stat={data.radius} />
+        <StatDisplay label="Average Temp." stat={data.temperature} />
+      </div>
+    </main>
   );
 }
 
