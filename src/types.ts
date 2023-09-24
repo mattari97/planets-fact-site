@@ -10,7 +10,7 @@ export interface PlanetData {
     content: string;
     source: string;
   };
-  geology: {
+  surface: {
     content: string;
     source: string;
   };
@@ -18,9 +18,12 @@ export interface PlanetData {
   revolution: string;
   radius: string;
   temperature: string;
+  scale: string;
   images: {
     planet: string;
     internal: string;
     geology: string;
   };
 }
+
+export type Tabs = 'overview' | 'structure' | 'surface';
