@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 import styles from './Navbar.module.css';
 import json from '../../data/data.json';
@@ -12,9 +12,9 @@ function Navbar() {
 
   return (
     <header className={styles.wrapper}>
-      <div className={styles.logo}>
+      <Link to={'/mercury'} className={styles.logo}>
         <span>The Planets</span>
-      </div>
+      </Link>
       <button
         className={styles.hamburger}
         onClick={toggleMenu}
