@@ -32,28 +32,23 @@
 
   /* font-size */
   --fs-menu: 0.9375rem;
-  --fs-tabs: 0.5625rem;
+  --fs-tabs: 0.6875rem;
   --fs-logo: 1.75rem;
   --fs-title: 2.5rem;
-  --fs-body: 0.6875rem;
-  --fs-source: 0.75rem;
-  --fs-stats-label: 0.5rem;
+  --fs-body: 0.875rem;
+  --fs-source: 0.875rem;
+  --fs-stats-label: 0.625rem;
   --fs-stats-content: 1.25rem;
 
   @media (min-width: 768px) {
     --fs-menu: 0.6875rem;
     --fs-title: 3rem;
-    --fs-body: 0.6875rem;
-    --fs-source: 0.75rem;
     --fs-stats-content: 1.5rem;
   }
 
   @media (min-width: 980px) {
-    /* --fs-menu: 0.75rem; */
     --fs-tabs: 0.75rem;
     --fs-title: 5rem;
-    --fs-body: 0.875rem;
-    --fs-source: 0.875rem;
     --fs-stats-label: 0.6875rem;
     --fs-stats-content: 2.5rem;
   }
