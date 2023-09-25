@@ -13,7 +13,7 @@ function TabNavigation(props: TabNavigationProps) {
   return (
     <div className={styles.wrapper} style={{ '--accent-color': props.accentClr } as React.CSSProperties}>
       {TAB_ITEMS.map((item, index) => (
-        <div className={styles.tab} data-active={props.activeTab === item}>
+        <div key={index} className={styles.tab} data-active={props.activeTab === item}>
           <button key={index} onClick={() => props.action(item)}>
             {item}
           </button>
