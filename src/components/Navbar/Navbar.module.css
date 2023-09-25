@@ -163,6 +163,12 @@
         transition: transform 250ms linear;
       }
 
+      &:hover {
+        span {
+          opacity: 1;
+        }
+      }
+
       &[aria-current='page']::before,
       &:hover::before {
         transform: scaleX(1);
