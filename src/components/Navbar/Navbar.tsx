@@ -28,8 +28,11 @@ function Navbar() {
         <ul>
           {NAVBAR_ITEMS.map((item, index) => (
             <li key={index}>
-              <NavLink role="link" to={`/${item.slug}`} onClick={() => (menuOpen ? toggleMenu() : {})}>
-                <div className={styles.bullet} style={{ backgroundColor: `hsl(${item.color})` }} aria-hidden="true" />
+              <NavLink
+                role="link"
+                to={`/${item.slug}`}
+                onClick={() => (menuOpen ? toggleMenu() : {})}
+                style={{ '--accent-color': item.color } as React.CSSProperties}>
                 <span>{item.name}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 8" aria-hidden="true">
                   <path fill="none" stroke="currentColor" opacity=".4" d="m1 0 4 4-4 4" />

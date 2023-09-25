@@ -7,7 +7,7 @@
 
   @media (min-width: 768px) {
     flex-direction: column;
-    gap: var(--space-lg);
+    gap: var(--space-md);
     padding: var(--space-lg);
   }
 
@@ -44,20 +44,31 @@
 
 .nav {
   z-index: 999;
+
   ul {
     display: flex;
   }
 
-  span {
-    font-size: var(--fs-menu);
-    font-family: var(--ff-body);
-    font-weight: var(--fw-bold);
-    letter-spacing: 0.08525rem;
-    text-transform: uppercase;
-  }
-
   a {
     text-decoration: none;
+    display: flex;
+    align-items: center;
+
+    span {
+      font-size: var(--fs-menu);
+      font-family: var(--ff-body);
+      font-weight: var(--fw-bold);
+      letter-spacing: 0.08525rem;
+      text-transform: uppercase;
+      opacity: 0.5;
+      transition: opacity 150ms linear;
+    }
+
+    &[aria-current='page'] {
+      span {
+        opacity: 1;
+      }
+    }
   }
 
   @media (max-width: 767px) {
@@ -87,15 +98,16 @@
     }
 
     a {
-      display: flex;
-      align-items: center;
       padding-block: var(--space-md);
       gap: var(--space-md);
 
-      div {
+      &::before {
+        content: '';
+        display: block;
         --bullet-size: 1.25rem;
         width: var(--bullet-size);
         height: var(--bullet-size);
+        background-color: hsl(var(--accent-color));
         border-radius: 50%;
       }
 
@@ -116,6 +128,9 @@
     }
 
     a {
+      padding: var(--space-xs);
+      margin-inline: calc(var(--space-xs) * -1);
+
       svg {
         display: none;
       }
@@ -132,39 +147,26 @@
 
     a {
       height: 100%;
-      display: flex;
       position: relative;
-      align-items: center;
-      padding-inline: var(--space-xs);
-      margin-inline: calc(var(--space-xs) * -1);
 
-      div {
+      &::before {
         --line-height: 0.25rem;
+        content: '';
+        display: block;
         position: absolute;
         bottom: calc(100% + var(--space-base) - var(--line-height));
         inset-inline: 0;
         height: var(--line-height);
+        background-color: hsl(var(--accent-color));
         opacity: 0;
+        transform: scaleX(0);
+        transition: transform 250ms linear;
       }
 
-      span {
-        opacity: 0.75;
-        transition: opacity 150ms linear;
-      }
-
-      &[aria-current='page'] {
-        span {
-          opacity: 1;
-        }
-        div {
-          opacity: 1;
-        }
-      }
-
-      &:hover {
-        span {
-          opacity: 1;
-        }
+      &[aria-current='page']::before,
+      &:hover::before {
+        transform: scaleX(1);
+        opacity: 1;
       }
     }
   }
