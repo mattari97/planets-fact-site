@@ -45,6 +45,7 @@
 
   @media (min-width: 768px) {
     border: 1px solid hsl(0 0% 100% / 0.2);
+    transition: background-color 250ms linear;
 
     &[data-active='true'] {
       background-color: hsl(var(--accent-color));
