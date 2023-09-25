@@ -8,7 +8,7 @@ const animateStars = () =>
     targets: ['.star'],
     easing: 'linear',
     loop: true,
-    delay: (_, i) => 1000 * i,
+    delay: (_, i) => 1250 * i,
     opacity: [{ duration: 100, value: '1' }],
     width: [{ value: '150px' }, { value: '0px' }],
     translateX: 350,

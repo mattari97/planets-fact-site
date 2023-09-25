@@ -210,7 +210,6 @@ body {
 #shootingstars {
   display: block;
   position: fixed;
-  z-index: -1;
   width: 150vh;
   height: 100vw;
   margin: 0;
