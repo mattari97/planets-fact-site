@@ -25,6 +25,7 @@
   }
 
   button {
+    cursor: pointer;
     height: 3rem;
     padding-inline: var(--space-2xs);
     font-size: var(--fs-tabs);
@@ -49,6 +50,10 @@
 
     &[data-active='true'] {
       background-color: hsl(var(--accent-color));
+    }
+
+    &[data-active='false']:hover {
+      background-color: hsl(var(--clr-nav-hover) / 0.2);
     }
 
     button {
