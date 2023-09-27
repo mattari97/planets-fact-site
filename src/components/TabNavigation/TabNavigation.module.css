@@ -4,6 +4,10 @@
   padding-inline: var(--space-md);
   border-bottom: 1px solid hsl(0 0% 100% / 0.2);
 
+  @media (max-width: 767px) {
+    background-color: hsl(var(--clr-neutral-400));
+  }
+
   @media (min-width: 768px) {
     grid-area: tabs;
     align-self: center;
@@ -17,6 +21,7 @@
 
 .tab {
   position: relative;
+  background-color: hsl(var(--clr-neutral-400));
 
   &[data-active='true'] {
     div {
