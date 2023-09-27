@@ -199,7 +199,6 @@ body {
   font-weight: var(--fw-normal);
   color: hsl(var(--clr-neutral-100));
   background-color: hsl(var(--clr-neutral-400));
-  /* background-image: url('/assets/background-stars.svg'); */
   background-position: center;
   background-repeat: repeat;
 }
@@ -226,12 +225,10 @@ body {
 
 .star {
   height: 2px;
-  /* top: 300px; */
   width: 100px;
   margin: 0;
   opacity: 0;
   padding: 0;
-  /* background-color: white; */
   position: absolute;
   background: linear-gradient(-45deg, white, rgba(0, 0, 255, 0));
   filter: drop-shadow(0 0 6px white);
@@ -253,5 +250,24 @@ body {
 
   50% {
     opacity: 0;
+  }
+}
+
+.moving-letters {
+  position: relative;
+
+  & .text-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.2em;
+    padding-right: 0.05em;
+    padding-bottom: 0.1em;
+    overflow: hidden;
+  }
+
+  & .letter {
+    transform-origin: 0 100%;
+    display: inline-block;
+    line-height: 1em;
   }
 }
