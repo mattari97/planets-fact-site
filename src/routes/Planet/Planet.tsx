@@ -5,7 +5,7 @@ import styles from './Planet.module.css';
 import jsonData from '../../data/data.json';
 import { SourceLink, StatDisplay, TabNavigation } from '../../components';
 import { Tabs } from '../../types';
-import { movingTitleHelpers } from '../../helpers';
+import { textAnimationHelpers } from '../../helpers';
 
 function getPlanetData(slug: string | undefined) {
   if (!slug) return jsonData[0];
@@ -22,7 +22,10 @@ function Planet() {
   const [tab, setTab] = React.useState<Tabs>('overview');
   const currInfos = React.useMemo(() => data[tab], [data, tab]);
 
-  React.useEffect(() => movingTitleHelpers.animateMovingTitle(), []);
+  React.useEffect(() => {
+    textAnimationHelpers.animateMovingTitle();
+    textAnimationHelpers.animateBodyText();
+  }, [slug]);
 
   return (
     <main className={styles.wrapper}>
@@ -43,7 +46,7 @@ function Planet() {
             <span className="letters">{data.name}</span>
           </span>
         </h1>
-        <p>{currInfos.content}</p>
+        <p className="body-text">{currInfos.content}</p>
         <SourceLink source={currInfos.source} />
       </div>
       <div className={styles.stats}>
