@@ -5,7 +5,7 @@ import styles from './Planet.module.css';
 import jsonData from '../../data/data.json';
 import { SourceLink, StatDisplay, TabNavigation } from '../../components';
 import { Tabs } from '../../types';
-import { textAnimationHelpers } from '../../helpers';
+import { planetHelpers, textAnimationHelpers } from '../../helpers';
 
 function getPlanetData(slug: string | undefined) {
   if (!slug) return jsonData[0];
@@ -25,12 +25,13 @@ function Planet() {
   React.useEffect(() => {
     textAnimationHelpers.animateMovingTitle();
     textAnimationHelpers.animateBodyText();
+    planetHelpers.animatePlanet();
   }, [slug]);
 
   return (
     <main className={styles.wrapper}>
       <TabNavigation activeTab={tab} action={setTab} accentClr={data.color} />
-      <div className={styles.img}>
+      <div className={`${styles.img} planet`}>
         <img
           src={tab === 'structure' ? data.images.structure : data.images.overview}
           style={{ '--planet-scale': data.scale } as React.CSSProperties}
