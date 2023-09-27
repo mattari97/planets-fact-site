@@ -1,8 +1,7 @@
 import * as React from 'react';
 
 import styles from './Layout.module.css';
-import starsHelpers from '../../helpers/starsHelpers';
-import circlesHelpers from '../../helpers/circlesHelpers';
+import { circlesHelpers, starsHelpers } from '../../helpers';
 import { Navbar } from '../../components';
 import { Navigate, Outlet, useParams } from 'react-router-dom';
 
