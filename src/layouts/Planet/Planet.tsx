@@ -1,24 +1,13 @@
 import * as React from 'react';
-import { useParams } from 'react-router-dom';
 
 import styles from './Planet.module.css';
-import jsonData from '../../data/data.json';
+import useStore from '../../data/store';
 import { SourceLink, StatDisplay, TabNavigation } from '../../components';
 import { Tabs } from '../../types';
 import { planetHelpers, textAnimationHelpers } from '../../helpers';
 
-function getPlanetData(slug: string | undefined) {
-  if (!slug) return jsonData[0];
-  for (let i = 0; i < jsonData.length; i++) {
-    const data = jsonData[i];
-    if (data.name === slug) return data;
-  }
-  throw new Error('Unknown planet');
-}
-
 function Planet() {
-  const { slug } = useParams();
-  const data = React.useMemo(() => getPlanetData(slug), [slug]);
+  const data = useStore((state) => state.data);
   const [tab, setTab] = React.useState<Tabs>('overview');
   const currInfos = React.useMemo(() => data[tab], [data, tab]);
 
@@ -26,7 +15,7 @@ function Planet() {
     textAnimationHelpers.animateMovingTitle();
     textAnimationHelpers.animateBodyText();
     planetHelpers.animatePlanet();
-  }, [slug]);
+  }, [data]);
 
   return (
     <main className={styles.wrapper}>

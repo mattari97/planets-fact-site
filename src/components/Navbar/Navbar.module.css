@@ -50,8 +50,8 @@
     display: flex;
   }
 
-  a {
-    text-decoration: none;
+  button {
+    cursor: pointer;
     display: flex;
     align-items: center;
 
@@ -65,7 +65,7 @@
       transition: opacity 150ms linear;
     }
 
-    &[aria-current='page'] {
+    &[aria-current='true'] {
       span {
         opacity: 1;
       }
@@ -98,9 +98,10 @@
       }
     }
 
-    a {
+    button {
       padding-block: var(--space-md);
       gap: var(--space-md);
+      width: 100%;
 
       &::before {
         content: '';
@@ -114,6 +115,7 @@
 
       span {
         flex-grow: 1;
+        text-align: left;
       }
 
       svg {
@@ -128,7 +130,7 @@
       gap: var(--space-lg);
     }
 
-    a {
+    button {
       padding: var(--space-xs);
       margin-inline: calc(var(--space-xs) * -1);
 
@@ -146,7 +148,7 @@
       padding-block: var(--space-base);
     }
 
-    a {
+    button {
       height: 100%;
       position: relative;
 
@@ -170,7 +172,7 @@
         }
       }
 
-      &[aria-current='page']::before,
+      &[aria-current='true']::before,
       &:hover::before {
         transform: scaleX(1);
         opacity: 1;

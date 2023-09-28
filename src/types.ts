@@ -1,6 +1,5 @@
 export interface PlanetData {
   name: string;
-  slug: string;
   color: string;
   overview: {
     content: string;
@@ -20,10 +19,15 @@ export interface PlanetData {
   temperature: string;
   scale: string;
   images: {
-    planet: string;
-    internal: string;
-    geology: string;
+    overview: string;
+    structure: string;
+    surface: string;
   };
 }
 
 export type Tabs = 'overview' | 'structure' | 'surface';
+
+export interface Store {
+  data: PlanetData;
+  updateData: (name: string) => void;
+}

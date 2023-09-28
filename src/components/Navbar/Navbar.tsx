@@ -1,20 +1,26 @@
 import * as React from 'react';
-import { NavLink, Link } from 'react-router-dom';
 
 import styles from './Navbar.module.css';
 import json from '../../data/data.json';
+import useStore from '../../data/store';
 
 const NAVBAR_ITEMS = json.map((item) => ({ name: item.name, color: item.color }));
 
 function Navbar() {
+  const name = useStore((state) => state.data.name);
+  const updateData = useStore((state) => state.updateData);
   const [menuOpen, setMenuOpen] = React.useState(false);
   const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const navigate = (name: string) => () => {
+    updateData(name);
+    if (menuOpen) toggleMenu();
+  };
 
   return (
     <header className={styles.wrapper}>
-      <Link to={'/mercury'} className={styles.logo}>
+      <div className={styles.logo}>
         <span>The Planets</span>
-      </Link>
+      </div>
       <button
         className={styles.hamburger}
         onClick={toggleMenu}
@@ -28,16 +34,17 @@ function Navbar() {
         <ul>
           {NAVBAR_ITEMS.map((item, index) => (
             <li key={index}>
-              <NavLink
-                role="link"
-                to={`/${item.name}`}
-                onClick={() => (menuOpen ? toggleMenu() : {})}
+              <button
+                role="navigation"
+                aria-label={`Navigate to ${item.name}'s page`}
+                aria-current={item.name === name}
+                onClick={navigate(item.name)}
                 style={{ '--accent-color': item.color } as React.CSSProperties}>
                 <span>{item.name}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 8" aria-hidden="true">
                   <path fill="none" stroke="currentColor" opacity=".4" d="m1 0 4 4-4 4" />
                 </svg>
-              </NavLink>
+              </button>
             </li>
           ))}
         </ul>
