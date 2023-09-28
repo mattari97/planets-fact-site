@@ -18,7 +18,7 @@ function Layout() {
   }, []);
 
   return !slug ? (
-    <Navigate to={'/mercury'} />
+    <Navigate to={'/Mercury'} />
   ) : (
     <div className={styles.wrapper}>
       <Navbar />

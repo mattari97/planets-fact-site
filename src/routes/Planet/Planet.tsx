@@ -11,9 +11,9 @@ function getPlanetData(slug: string | undefined) {
   if (!slug) return jsonData[0];
   for (let i = 0; i < jsonData.length; i++) {
     const data = jsonData[i];
-    if (data.slug === slug) return data;
+    if (data.name === slug) return data;
   }
-  throw new Error('Unknown slug');
+  throw new Error('Unknown planet');
 }
 
 function Planet() {

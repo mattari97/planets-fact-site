@@ -4,7 +4,7 @@ import { NavLink, Link } from 'react-router-dom';
 import styles from './Navbar.module.css';
 import json from '../../data/data.json';
 
-const NAVBAR_ITEMS = json.map((item) => ({ name: item.name, color: item.color, slug: item.slug }));
+const NAVBAR_ITEMS = json.map((item) => ({ name: item.name, color: item.color }));
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -30,7 +30,7 @@ function Navbar() {
             <li key={index}>
               <NavLink
                 role="link"
-                to={`/${item.slug}`}
+                to={`/${item.name}`}
                 onClick={() => (menuOpen ? toggleMenu() : {})}
                 style={{ '--accent-color': item.color } as React.CSSProperties}>
                 <span>{item.name}</span>
