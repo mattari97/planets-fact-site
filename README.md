@@ -1,4 +1,4 @@
-# Frontend Mentor - Dictionary web app solution
+# Frontend Mentor - Planets Fact Site solution
 
 This is a solution to the [Planets fact site challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/planets-fact-site-gazqN8w_f). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
@@ -50,8 +50,8 @@ Bonus:
 
 ### Links
 
-- [Solution URL](https://www.frontendmentor.io/solutions/dictionary-web-app-react-typescript-AM_r8OGGxI)
-- [Live Site URL](https://dictionary-web-app-acdev.vercel.app/)
+- [Solution URL](https://www.frontendmentor.io/solutions/planets-fact-site-react-typescript-postcss-animejs-AqhbRhDKf_)
+- [Live Site URL](https://planets-fact-site-acdev.vercel.app/)
 
 ## My process
 
@@ -63,47 +63,33 @@ Bonus:
 - Mobile-first workflow
 - [Typescript](https://www.typescriptlang.org/)
 - [React](https://react.dev/)
-- [PostCSS](https://ariakit.org/)
-- [Animejs](https://ariakit.org/)
+- [PostCSS](https://postcss.org/)
+- [Animejs](https://animejs.com/)
 
 ### What I learned
 
-#### AriaKit
+#### Animejs
 
-Really awesome unstyled component library to simplify accessibility
-
-#### Custom Hooks
-
-It was always a very enjoyable part of React since hooks were introduced.
-This time i used it to handle the localstorage logic of the app.
-Here is the code:
+Very neat js library for animations. See below the shooting stars animation fn:
 
 ```ts
-const LOCAL_PREFIX = 'dictionary-web-app';
+const shootingstars = document.getElementById('shootingstars') as HTMLDivElement;
 
-const useLocalStorage = <T>(key: string, initialValue: T) => {
-  const localKey = `${LOCAL_PREFIX}.${key}`;
-  const [value, setValue] = React.useState<T>(() => {
-    try {
-      const localValue = window.localStorage.getItem(localKey);
-      return localValue ? JSON.parse(localValue) : initialValue;
-    } catch (err) {
-      console.log(err);
-      return initialValue;
-    }
+const animateStars = () =>
+  anime({
+    targets: ['.star'],
+    easing: 'linear',
+    loop: true,
+    delay: (_, i) => 3000 * i,
+    opacity: [{ duration: 100, value: '1' }],
+    width: [{ value: '150px' }, { value: '0px' }],
+    translateX: 350,
   });
-
-  React.useEffect(() => {
-    window.localStorage.setItem(localKey, JSON.stringify(value));
-  }, [localKey, value]);
-
-  return [value, setValue] as const;
-};
 ```
 
 ### Useful resources
 
-- [AriaKit Components](https://ariakit.org/components) - Build accessible web apps with React.
+- [https://tobiasahlin.com/](https://tobiasahlin.com/) - Awesome designer/developer blog. Thanks a lot !
 
 ## Author
 
