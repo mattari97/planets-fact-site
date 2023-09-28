@@ -3,7 +3,7 @@ import anime from 'animejs';
 const animatePlanet = () =>
   anime({
     targets: '.planet',
-    easing: 'linear',
+    easing: 'easeInOutExpo',
     scale: [
       { duration: 0, value: 0 },
       { duration: 750, value: 1 },
