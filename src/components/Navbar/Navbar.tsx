@@ -35,7 +35,6 @@ function Navbar() {
           {NAVBAR_ITEMS.map((item, index) => (
             <li key={index}>
               <button
-                role="navigation"
                 aria-label={`Navigate to ${item.name}'s page`}
                 aria-current={item.name === name}
                 onClick={navigate(item.name)}
