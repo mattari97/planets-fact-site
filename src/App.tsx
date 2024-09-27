@@ -14,10 +14,10 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <>
       <Navbar />
       <Planet />
-    </div>
+    </>
   );
 }
 
