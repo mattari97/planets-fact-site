@@ -12,13 +12,15 @@
 
   @media (min-width: 980px) {
     grid-template-columns: 1fr 22rem;
+    grid-template-rows: auto auto 1fr;
     grid-template-areas:
       'image content'
       'image tabs'
       'stats stats';
     width: min(100%, 70rem);
     margin-inline: auto;
-    margin-top: var(--space-7xl);
+    flex-grow: 1;
+    padding-block-start: var(--space-lg);
   }
 }
 
@@ -106,6 +108,7 @@
   gap: var(--space-xs);
   margin-block: var(--space-lg);
   padding-inline: var(--space-md);
+  align-items: center;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -118,7 +121,7 @@
   }
 
   @media (min-width: 980px) {
-    margin-block: var(--space-4xl);
+    margin-block: var(--space-xl);
     gap: var(--space-md);
   }
 }

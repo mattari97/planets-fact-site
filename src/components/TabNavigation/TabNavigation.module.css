@@ -16,6 +16,7 @@
     padding-inline: 0;
     border-bottom: 0;
     counter-reset: count 0;
+    margin-block-end: var(--space-lg);
   }
 }
 
